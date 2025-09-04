@@ -1,0 +1,41 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "C:\\Users\\User\\Desktop\\Coding\\SmartContractTruyXuat\\src\\contracts\\truyxuat.sol": {
+      "lastModificationDate": 1756957034503,
+      "contentHash": "69707cefb28298c05dcd8ce0afe91fb6",
+      "sourceName": "src/contracts/truyxuat.sol",
+      "solcConfig": {
+        "version": "0.8.28",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.19"
+      ],
+      "artifacts": [
+        "AgriculturalTraceabilitySystem"
+      ]
+    }
+  }
+}
