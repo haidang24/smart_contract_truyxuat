@@ -1,12 +1,15 @@
-# 🌾 Agricultural Traceability System
+# 🌾 Agricultural Traceability System v2.0
 
 <div align="center">
 
 ![Solidity](https://img.shields.io/badge/Solidity-0.8.28-363636?style=for-the-badge&logo=solidity)
 ![Network](https://img.shields.io/badge/Network-ZeroScan-green?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-VERIFIED-brightgreen?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
 
 **Blockchain-based Farm-to-Consumer Traceability System**
+
+[Contract Address](#-contract-details) • [Quick Start](#-quick-start) • [Documentation](#-documentation)
 
 </div>
 
@@ -14,83 +17,249 @@
 
 ## 🎯 Overview
 
-Smart contract system for tracking agricultural products from farm to consumer, providing complete transparency and traceability in the food supply chain.
+A professional, modular smart contract system for end-to-end agricultural product traceability on blockchain. Track products from farm to consumer with complete transparency and immutable records.
 
 ### ✨ Key Features
 
-- 🏡 **Farm Management** - Register and manage multiple farms
-- 🌾 **Product Tracking** - Complete product lifecycle tracking
-- 🔬 **Process Monitoring** - Track agricultural processes (Farming, Medicine, Fertilizer, Harvest, Distribution)
-- 🏆 **Certification System** - Multiple certification levels
-- 👥 **Multi-User Support** - Role-based access control
+- 🔒 **Enterprise Security** - Input validation, access control, gas optimized
+- 📊 **Modular Architecture** - Clean separation of concerns, easy to maintain
+- 🌾 **Complete Traceability** - From seed to consumer, full supply chain tracking
+- 🏷️ **Batch Management** - Product batches with QR codes and certification
+- 📱 **API Ready** - Easy integration with web/mobile applications
+- 🚀 **Production Ready** - Verified, deployed, and tested on blockchain
 
-## 🏗️ Project Structure
+---
 
+## 🏗️ Architecture
+
+### **Modular Design:**
 ```
-SmartContractTruyXuat/
-├── src/                    # Source code
-│   ├── contracts/         # Smart contracts
-│   ├── scripts/           # Deployment scripts
-│   └── test/              # Test files
-├── docs/                  # Documentation
-├── frontend/              # Frontend integration
-│   ├── README.md          # Integration guide
-│   ├── contract-config.js # Configuration
-│   └── abi/               # Contract ABI
-├── hardhat.config.js      # Hardhat configuration
-└── package.json           # Dependencies
+src/contracts/
+├── AgriculturalTraceabilitySystem.sol    # Main contract
+├── interfaces/                           # Clean API contracts
+├── libraries/                            # Reusable components
+├── storage/                              # Data management
+└── modules/                              # Business logic
+    ├── FarmManagement.sol                # Farm operations
+    ├── ProductManagement.sol             # Product operations
+    └── ProcessManagement.sol             # Process tracking
 ```
 
-## 🚀 Quick Start
+### **Core Modules:**
+- **Farm Management** - Register and manage farms
+- **Product Management** - Track products and batches
+- **Process Management** - Record agricultural processes
+- **Traceability** - Complete product history
 
+---
+
+## 🚀 Contract Details
+
+### **Deployment Information:**
+- **Contract Address:** `0x1eCf95Ad252675701B542143f962B8F2f7336C67`
+- **Network:** Zeroscan (Chain ID: 5080)
+- **Status:** ✅ **VERIFIED & DEPLOYED**
+- **Explorer:** [View on Zeroscan](https://zeroscan.org/address/0x1eCf95Ad252675701B542143f962B8F2f7336C67#code)
+- **Version:** 2.0.0 (Modular Architecture)
+
+### **Contract Functions:**
+```solidity
+// Farm Management
+registerFarm()     // Register new farms
+updateFarm()       // Update farm information
+getAllFarms()      // Get all registered farms
+
+// Product Management  
+addProduct()       // Add products with batch tracking
+updateProduct()    // Update product details
+getProductByFarmCode() // Get products by farm
+
+// Process Tracking
+addFarmingProcess() // Record farming activities
+addMedicine()      // Track medicine usage
+addFertilizer()    // Record fertilizer application
+addHarvest()       // Log harvest information
+addDistribution()  // Track distribution
+
+// Traceability
+getCompleteProductTraceability() // Full product history
+```
+
+---
+
+## 🛠️ Quick Start
+
+### **Prerequisites:**
 ```bash
-# Install dependencies
-npm install
+node >= 16.0.0
+npm >= 8.0.0
+```
 
+### **Installation:**
+```bash
+git clone <repository>
+cd SmartContractTruyXuat
+npm install
+```
+
+### **Compile & Deploy:**
+```bash
 # Compile contracts
 npx hardhat compile
 
-# Run tests
-npx hardhat test
+# Deploy to network
+npx hardhat run src/scripts/deploy-modular.js --network <network>
 
-# Deploy to ZeroScan network
-npx hardhat run src/scripts/deploy.js --network zeroscan
+# Verify contract
+npx hardhat verify --network <network> <contract-address>
 ```
 
-## 📊 Contract Information
+### **Basic Usage:**
+```javascript
+// Connect to contract
+const contract = new ethers.Contract(
+  "0x1eCf95Ad252675701B542143f962B8F2f7336C67",
+  ABI,
+  signer
+);
 
-- **Network**: ZeroScan (Chain ID: 5080)
-- **Contract Address**: `0x8F6c1F3bb7561988ef6F749874690aA2450b039E`
-- **Explorer**: https://zeroscan.org/address/0x8F6c1F3bb7561988ef6F749874690aA2450b039E
+// Register a farm
+await contract.registerFarm(
+  "FARM001",           // farmCode
+  "Nguyen Van A",      // fullname
+  "Trang trai rau sach", // nameFarm
+  "USER001",           // userId
+  "farmer@example.com", // email
+  "0123456789",        // phone
+  "Trang trai trong rau sach huu co", // description
+  "Ha Noi, Viet Nam",  // location
+  1000,                // area (m²)
+  ["image1.jpg"]       // images
+);
 
-## 🏛️ Architecture
+// Add a product
+const productData = {
+  farmCode: "FARM001",
+  productCode: "PROD001",
+  categoryName: "Rau cu",
+  name: "Rau Cai Xanh",
+  quantity: "100kg",
+  price: "50000 VND/kg",
+  description: "Rau cai xanh huu co",
+  image: "product1.jpg",
+  batchCode: "BATCH001",
+  certification: "Organic",
+  certificationLevel: 2 // ORGANIC
+};
+await contract.addProduct(productData);
 
-### 📋 Core Components
+// Get complete traceability
+const traceability = await contract.getCompleteProductTraceability("PROD001");
+```
 
-- **🏡 Farm Management** - Farm registration and management
-- **🌾 Product Tracking** - Product lifecycle tracking
-- **🔬 Agricultural Processes** - Farming, Medicine, Fertilizer, Harvest, Distribution
-- **🔐 Security** - Role-based access control and validation
+---
+
+## 📊 Business Applications
+
+### **Target Markets:**
+- 🌾 **Agricultural Cooperatives** - Farm-to-table traceability
+- 🏪 **Retail Supply Chains** - Supply chain transparency
+- 🏛️ **Government Compliance** - Food safety compliance
+- 🌍 **Export Certification** - International certification
+- 👥 **Consumer Verification** - Product authenticity
+
+### **Use Cases:**
+- **Food Safety** - Track contamination sources
+- **Organic Certification** - Verify organic practices
+- **Export Documentation** - Meet international standards
+- **Consumer Trust** - Build brand transparency
+- **Supply Chain Optimization** - Identify bottlenecks
+
+### **Revenue Models:**
+- **SaaS Subscription** - Monthly/yearly access fees
+- **Transaction Fees** - Per-product registration
+- **Enterprise Licensing** - Custom deployments
+- **API Access** - Third-party integrations
+
+---
 
 ## 📚 Documentation
 
-- **[📋 Usage Guide](docs/USAGE_GUIDE.md)** - How to use the contract
-- **[🚀 Frontend Integration](frontend/README.md)** - Complete frontend integration guide
+- 📖 **[Usage Guide](USAGE_GUIDE.md)** - Detailed usage instructions
+- 🏗️ **Architecture** - Modular design documentation
+- 💼 **Business Plan** - Commercialization strategy
+- 🔧 **API Reference** - Function documentation
 
-## 🎨 Frontend Integration
+---
 
-The `frontend/` directory contains everything needed for web integration. See `frontend/README.md` for detailed instructions.
+## 🧪 Testing
+
+### **Run Tests:**
+```bash
+# Run all tests
+npx hardhat test
+
+# Run specific test
+npx hardhat test src/test/AgriculturalTraceabilityTest.js
+```
+
+### **Test Coverage:**
+- ✅ Farm registration and management
+- ✅ Product addition and tracking
+- ✅ Agricultural process recording
+- ✅ Complete traceability queries
+- ✅ Error handling and validation
+
+---
+
+## 🔒 Security
+
+### **Security Features:**
+- Input validation for all functions
+- Access control with modifiers
+- Reentrancy protection
+- Gas optimization
+- Comprehensive error handling
+
+### **Audit Status:**
+- ✅ Code review completed
+- ✅ Gas optimization verified
+- ✅ Security best practices implemented
+- 🔄 Formal security audit (planned)
+
+---
+
+## 🤝 Contributing
+
+This is a production-ready commercial project. For business inquiries:
+
+- 💰 **Investment opportunities**
+- 🤝 **Strategic partnerships**
+- 🛠️ **Custom implementations**
+- 📈 **Licensing agreements**
+
+---
 
 ## 📄 License
 
-This project is licensed under the MIT License.
+Proprietary - Commercial use requires license agreement.
+
+---
+
+## 📞 Contact
+
+**Ready for commercialization discussions!**
+
+- **Contract:** [0x1eCf95Ad252675701B542143f962B8F2f7336C67](https://zeroscan.org/address/0x1eCf95Ad252675701B542143f962B8F2f7336C67#code)
+- **Network:** Zeroscan (Chain ID: 5080)
+- **Status:** Production Ready ✅
 
 ---
 
 <div align="center">
 
-### 🌾 **Built for Sustainable Agriculture**
+**🌾 From Farm to Consumer - Complete Transparency on Blockchain**
 
-**Blockchain-based farm-to-consumer traceability system**
+*Last Updated: September 10, 2025 • Version: 2.0.0*
 
 </div>

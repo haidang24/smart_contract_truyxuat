@@ -1,0 +1,16 @@
+{
+  "contractAddress": "0x1eCf95Ad252675701B542143f962B8F2f7336C67",
+  "deployer": "0x87Eaaebcd514F8b981f63C11aA9e79DC95A4F4ce",
+  "network": {
+    "name": "zeroscan",
+    "chainId": "5080"
+  },
+  "timestamp": "2025-09-10T02:14:40.624Z",
+  "version": "2.0.0",
+  "modules": [
+    "FarmManagement",
+    "ProductManagement",
+    "ProcessManagement",
+    "TraceabilityStorage"
+  ]
+}

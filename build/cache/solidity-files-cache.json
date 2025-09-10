@@ -1,17 +1,183 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "C:\\Users\\User\\Desktop\\Coding\\SmartContractTruyXuat\\src\\contracts\\truyxuat.sol": {
-      "lastModificationDate": 1756957034503,
-      "contentHash": "69707cefb28298c05dcd8ce0afe91fb6",
-      "sourceName": "src/contracts/truyxuat.sol",
+    "C:\\Users\\User\\Desktop\\Coding\\SmartContractTruyXuat\\src\\contracts\\AgriculturalTraceabilitySystem.sol": {
+      "lastModificationDate": 1757470195594,
+      "contentHash": "3cbc664c1a73ec3b1670d002d6744d09",
+      "sourceName": "src/contracts/AgriculturalTraceabilitySystem.sol",
       "solcConfig": {
         "version": "0.8.28",
         "settings": {
           "optimizer": {
             "enabled": true,
-            "runs": 1
+            "runs": 200
           },
+          "viaIR": true,
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./modules/FarmManagement.sol",
+        "./modules/ProductManagement.sol",
+        "./modules/ProcessManagement.sol",
+        "./libraries/DataTypes.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.19"
+      ],
+      "artifacts": [
+        "AgriculturalTraceabilitySystem"
+      ]
+    },
+    "C:\\Users\\User\\Desktop\\Coding\\SmartContractTruyXuat\\src\\contracts\\modules\\FarmManagement.sol": {
+      "lastModificationDate": 1757470543789,
+      "contentHash": "a822835f898868fffc5815df32f8889c",
+      "sourceName": "src/contracts/modules/FarmManagement.sol",
+      "solcConfig": {
+        "version": "0.8.28",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "viaIR": true,
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../interfaces/IFarmManagement.sol",
+        "../storage/TraceabilityStorage.sol",
+        "../libraries/DataTypes.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.19"
+      ],
+      "artifacts": [
+        "FarmManagement"
+      ]
+    },
+    "C:\\Users\\User\\Desktop\\Coding\\SmartContractTruyXuat\\src\\contracts\\modules\\ProductManagement.sol": {
+      "lastModificationDate": 1757470157238,
+      "contentHash": "09bfdcce0e0abd13783dc686ad522069",
+      "sourceName": "src/contracts/modules/ProductManagement.sol",
+      "solcConfig": {
+        "version": "0.8.28",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "viaIR": true,
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../interfaces/IProductManagement.sol",
+        "../storage/TraceabilityStorage.sol",
+        "../libraries/DataTypes.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.19"
+      ],
+      "artifacts": [
+        "ProductManagement"
+      ]
+    },
+    "C:\\Users\\User\\Desktop\\Coding\\SmartContractTruyXuat\\src\\contracts\\modules\\ProcessManagement.sol": {
+      "lastModificationDate": 1757470176179,
+      "contentHash": "1cf5dd8a282610fd38fe6aecb47649d1",
+      "sourceName": "src/contracts/modules/ProcessManagement.sol",
+      "solcConfig": {
+        "version": "0.8.28",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "viaIR": true,
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../interfaces/IProcessManagement.sol",
+        "../storage/TraceabilityStorage.sol",
+        "../libraries/DataTypes.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.19"
+      ],
+      "artifacts": [
+        "ProcessManagement"
+      ]
+    },
+    "C:\\Users\\User\\Desktop\\Coding\\SmartContractTruyXuat\\src\\contracts\\libraries\\DataTypes.sol": {
+      "lastModificationDate": 1757470079974,
+      "contentHash": "957ae3e5d9a7c5fdcae6dd3daa49fe51",
+      "sourceName": "src/contracts/libraries/DataTypes.sol",
+      "solcConfig": {
+        "version": "0.8.28",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "viaIR": true,
           "evmVersion": "paris",
           "outputSelection": {
             "*": {
@@ -34,7 +200,163 @@
         "^0.8.19"
       ],
       "artifacts": [
-        "AgriculturalTraceabilitySystem"
+        "DataTypes"
+      ]
+    },
+    "C:\\Users\\User\\Desktop\\Coding\\SmartContractTruyXuat\\src\\contracts\\interfaces\\IFarmManagement.sol": {
+      "lastModificationDate": 1757470103069,
+      "contentHash": "4b1c007be9a18d24fe23eb8be0a65732",
+      "sourceName": "src/contracts/interfaces/IFarmManagement.sol",
+      "solcConfig": {
+        "version": "0.8.28",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "viaIR": true,
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../libraries/DataTypes.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.19"
+      ],
+      "artifacts": [
+        "IFarmManagement"
+      ]
+    },
+    "C:\\Users\\User\\Desktop\\Coding\\SmartContractTruyXuat\\src\\contracts\\storage\\TraceabilityStorage.sol": {
+      "lastModificationDate": 1757470096339,
+      "contentHash": "e9ea85f4cb2860087b71d4e742bb7606",
+      "sourceName": "src/contracts/storage/TraceabilityStorage.sol",
+      "solcConfig": {
+        "version": "0.8.28",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "viaIR": true,
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../libraries/DataTypes.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.19"
+      ],
+      "artifacts": [
+        "TraceabilityStorage"
+      ]
+    },
+    "C:\\Users\\User\\Desktop\\Coding\\SmartContractTruyXuat\\src\\contracts\\interfaces\\IProductManagement.sol": {
+      "lastModificationDate": 1757470109597,
+      "contentHash": "24a84af939b084d869c4cb509d6aa9fe",
+      "sourceName": "src/contracts/interfaces/IProductManagement.sol",
+      "solcConfig": {
+        "version": "0.8.28",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "viaIR": true,
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../libraries/DataTypes.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.19"
+      ],
+      "artifacts": [
+        "IProductManagement"
+      ]
+    },
+    "C:\\Users\\User\\Desktop\\Coding\\SmartContractTruyXuat\\src\\contracts\\interfaces\\IProcessManagement.sol": {
+      "lastModificationDate": 1757470118033,
+      "contentHash": "80e05ece9d6d2d3c44be2857a9411681",
+      "sourceName": "src/contracts/interfaces/IProcessManagement.sol",
+      "solcConfig": {
+        "version": "0.8.28",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "viaIR": true,
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../libraries/DataTypes.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.19"
+      ],
+      "artifacts": [
+        "IProcessManagement"
       ]
     }
   }

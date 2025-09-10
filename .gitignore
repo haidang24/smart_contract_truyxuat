@@ -1,17 +1,58 @@
-node_modules
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build artifacts
+build/
+dist/
+*.tgz
+*.tar.gz
+
+# Environment variables
 .env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 
 # Hardhat files
-/cache
-/artifacts
+cache/
+artifacts/
+coverage/
+coverage.json
+typechain/
+typechain-types/
 
-# TypeChain files
-/typechain
-/typechain-types
+# Backup files
+backup/
 
-# solidity-coverage files
-/coverage
-/coverage.json
+# Temporary files
+*.tmp
+*.temp
+*.log
 
-# Hardhat Ignition default folder for deployments against a local node
-ignition/deployments/chain-31337
+# Deployment secrets (keep deployment-info files but ignore private keys)
+.secret
+private-keys/
+
+# Test files
+test-results/
+.nyc_output/

@@ -7,8 +7,9 @@ module.exports = {
     settings: {
       optimizer: {
         enabled: true,
-        runs: 1, // Optimized for deployment size
+        runs: 200, // Optimized for deployment size
       },
+      viaIR: true, // Use intermediate representation for better optimization
     },
   },
   paths: {
