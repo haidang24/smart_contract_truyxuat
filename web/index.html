@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agricultural Traceability</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="./pictures/logo.ico" />
+  <script>
+    window.APP_CONFIG = { address: "0x1eCf95Ad252675701B542143f962B8F2f7336C67", chainId: 5080 };
+  </script>
+</head>
+<body>
+  <div class="blob b1"></div> 
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+  <div class="container">
+    <div class="header">
+      <div class="brand">
+        <div class="logo"></div>
+        <h1>Agricultural Traceability - Web UI</h1>
+      </div>
+      <div class="header-actions">
+        <span class="badge">Chain ID: 5080</span>
+        <button id="btnConnect">Connect Wallet</button>
+        <span id="account"></span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="row">
+        <label>Contract:</label>
+        <code id="contractAddress"></code>
+        <button class="ghost" id="btnInfo">Get Contract Info</button>
+        <div class="loading" id="loadingInfo"><div class="spinner"></div>Loading...</div>
+      </div>
+      <pre id="info"></pre>
+    </div>
+
+    <div class="tabs">
+      <div class="tab active" data-tab="getters">Getters</div>
+      <div class="tab" data-tab="register">Register Farm</div>
+      <div class="tab" data-tab="addProduct">Add Product</div>
+      <div class="tab" data-tab="processes">Add Processes</div>
+    </div>
+
+    <div id="tab-getters" class="card">
+      <div class="row">
+        <button id="btnAllFarms">getAllFarms()</button>
+        <div class="loading" id="loadingAllFarms"><div class="spinner"></div>Loading...</div>
+      </div>
+
+      <div class="row">
+        <input id="inpUserId" placeholder="userId (e.g., USER001)" />
+        <button id="btnFarmsByUser">getFarmByUserId()</button>
+      </div>
+
+      <div class="row">
+        <input id="inpFarmCode" placeholder="farmCode (e.g., FARM001)" />
+        <button id="btnFarm">getFarm()</button>
+      </div>
+
+      <div class="row">
+        <input id="inpProductCode" placeholder="productCode (e.g., PROD001)" />
+        <button id="btnProduct">getProduct()</button>
+      </div>
+
+      <div class="row">
+        <input id="inpFarmCode2" placeholder="farmCode (for products)" />
+        <button id="btnProductsByFarm">getProductByFarmCode()</button>
+      </div>
+
+      <div class="row">
+        <input id="inpProductCode2" placeholder="productCode (traceability)" />
+        <button id="btnTrace">getCompleteProductTraceability()</button>
+      </div>
+
+      <div class="list" id="listFarms"></div>
+      <pre id="output"></pre>
+    </div>
+
+    <div id="tab-register" class="card" style="display:none">
+      <h2>Register Farm</h2>
+      <div class="row">
+        <input id="rf_farmCode" placeholder="farmCode" />
+        <input id="rf_fullname" placeholder="fullname" />
+      </div>
+      <div class="row">
+        <input id="rf_nameFarm" placeholder="nameFarm" />
+        <input id="rf_userId" placeholder="userId" />
+      </div>
+      <div class="row">
+        <input id="rf_email" placeholder="email" />
+        <input id="rf_phone" placeholder="phone" />
+      </div>
+      <div class="row">
+        <input id="rf_description" placeholder="description" style="min-width:100%" />
+      </div>
+      <div class="row">
+        <input id="rf_location" placeholder="location" />
+        <input id="rf_area" type="number" placeholder="area" />
+      </div>
+      <div class="row">
+        <input id="rf_images" placeholder="images (comma separated)" style="min-width:100%" />
+      </div>
+      <div class="row">
+        <button id="btnRegisterFarm">registerFarm()</button>
+        <div class="loading" id="loadingWrite"><div class="spinner"></div>Submitting...</div>
+      </div>
+      <pre id="writeOutput"></pre>
+    </div>
+
+    <div id="tab-addProduct" class="card" style="display:none">
+      <h2>Add Product</h2>
+      <div class="row">
+        <input id="ap_farmCode" placeholder="farmCode" />
+        <input id="ap_productCode" placeholder="productCode" />
+      </div>
+      <div class="row">
+        <input id="ap_categoryName" placeholder="categoryName" />
+        <input id="ap_name" placeholder="name" />
+      </div>
+      <div class="row">
+        <input id="ap_quantity" placeholder="quantity" />
+        <input id="ap_price" placeholder="price" />
+      </div>
+      <div class="row">
+        <input id="ap_description" placeholder="description" style="min-width:100%" />
+      </div>
+      <div class="row">
+        <input id="ap_image" placeholder="image url" style="min-width:100%" />
+      </div>
+      <div class="row">
+        <input id="ap_batchCode" placeholder="batchCode" />
+        <input id="ap_certification" placeholder="certification" />
+      </div>
+      <div class="row">
+        <select id="ap_certLevel">
+          <option value="0">NONE</option>
+          <option value="1">BASIC</option>
+          <option value="2">ORGANIC</option>
+          <option value="3">PREMIUM</option>
+          <option value="4">CERTIFIED</option>
+        </select>
+        <button id="btnAddProduct">addProduct()</button>
+        <div class="loading" id="loadingAddProduct"><div class="spinner"></div>Submitting...</div>
+      </div>
+      <pre id="addProductOutput"></pre>
+    </div>
+
+    <div id="tab-processes" class="card" style="display:none">
+      <h2>Add Processes</h2>
+      <h3>Farming Process</h3>
+      <div class="row">
+        <input id="fp_productCode" placeholder="productCode" />
+        <input id="fp_nameProcess" placeholder="nameProcess" />
+      </div>
+      <div class="row">
+        <input id="fp_source" placeholder="source" />
+        <input id="fp_plantingDate" placeholder="plantingDate" />
+        <input id="fp_sowingDate" placeholder="sowingDate" />
+      </div>
+      <div class="row">
+        <button id="btnAddFarming">addFarmingProcess()</button>
+      </div>
+
+      <h3>Medicine</h3>
+      <div class="row">
+        <input id="md_productCode" placeholder="productCode" />
+        <input id="md_nameMedicine" placeholder="nameMedicine" />
+        <input id="md_quantityMedicine" placeholder="quantity" />
+      </div>
+      <div class="row">
+        <input id="md_medicineDate" placeholder="medicineDate" />
+        <input id="md_medicineType" placeholder="medicineType" />
+        <input id="md_applicationMethod" placeholder="applicationMethod" />
+      </div>
+      <div class="row">
+        <button id="btnAddMedicine">addMedicine()</button>
+      </div>
+
+      <h3>Fertilizer</h3>
+      <div class="row">
+        <input id="fz_productCode" placeholder="productCode" />
+        <input id="fz_nameFertilizer" placeholder="nameFertilizer" />
+        <input id="fz_quantityFertilizer" placeholder="quantity" />
+      </div>
+      <div class="row">
+        <input id="fz_fertilizerDate" placeholder="fertilizerDate" />
+        <input id="fz_fertilizerType" placeholder="fertilizerType" />
+        <input id="fz_applicationMethod" placeholder="applicationMethod" />
+      </div>
+      <div class="row">
+        <input id="fz_expectedEffect" placeholder="expectedEffect" style="min-width:100%" />
+      </div>
+      <div class="row">
+        <button id="btnAddFertilizer">addFertilizer()</button>
+      </div>
+
+      <h3>Harvest</h3>
+      <div class="row">
+        <input id="hv_productCode" placeholder="productCode" />
+        <input id="hv_harvestDate" placeholder="harvestDate" />
+        <input id="hv_estimatedQuantity" placeholder="estimatedQuantity" />
+      </div>
+      <div class="row">
+        <input id="hv_actualQuantity" placeholder="actualQuantity" />
+        <input id="hv_quality" placeholder="quality" />
+        <input id="hv_harvestMethod" placeholder="harvestMethod" />
+      </div>
+      <div class="row">
+        <button id="btnAddHarvest">addHarvest()</button>
+      </div>
+
+      <h3>Distribution</h3>
+      <div class="row">
+        <input id="ds_productCode" placeholder="productCode" />
+        <input id="ds_distributorName" placeholder="distributorName" />
+        <input id="ds_distributorPartner" placeholder="distributorPartner" />
+      </div>
+      <div class="row">
+        <input id="ds_distributionDate" placeholder="distributionDate" />
+        <input id="ds_transportMethod" placeholder="transportMethod" />
+        <input id="ds_storageConditions" placeholder="storageConditions" />
+      </div>
+      <div class="row">
+        <button id="btnAddDistribution">addDistribution()</button>
+      </div>
+      <pre id="processOutput"></pre>
+    </div>
+
+    <div class="footer">© 2025 Agricultural Traceability. All rights reserved.</div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/ethers@6.13.2/dist/ethers.umd.min.js"></script>
+  <script src="abi.json"></script>
+  <script src="app.js"></script>
+  <script>
+    // Tabs handling
+    const tabs = document.querySelectorAll('.tab');
+    const tabPanels = {
+      getters: document.getElementById('tab-getters'),
+      register: document.getElementById('tab-register'),
+      addProduct: document.getElementById('tab-addProduct'),
+      processes: document.getElementById('tab-processes')
+    };
+    tabs.forEach(t => t.addEventListener('click', () => {
+      tabs.forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+      const name = t.dataset.tab;
+      Object.entries(tabPanels).forEach(([k, el]) => el.style.display = (k === name) ? 'block' : 'none');
+    }));
+  </script>
+</body>
+</html>
